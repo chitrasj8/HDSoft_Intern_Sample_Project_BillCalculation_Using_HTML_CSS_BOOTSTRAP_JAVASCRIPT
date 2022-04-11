@@ -1,0 +1,175 @@
+<html>
+
+	<head>
+		<title>Bill Calculater</title>
+			<link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+		<style>
+				body{
+					background-color:#d3d3d329;
+					}
+				form{
+					height:60%;
+					width:100%;
+					background-color:white;
+					border-color:#d3d3d329;					
+					font-size:20px;						
+					}
+				.container_contents{
+					padding: 60px 0px 70px 0px;					
+					}		
+				
+				h5, label{
+					color:#23bb9f;
+					font-family: inherit;
+					}
+				h5{
+					margin-top:20px;
+					margin-bottom:20px;
+					}
+				
+				input, select{
+					border-color:#d3d3d329;
+					border-radius:5px;
+					}
+				
+				.row-sm-6{
+					margin: 0px 0px 20px -100px;
+					}
+				.btn{
+					border-radius:5px;
+					
+					flex-basis: fit-content;
+					font-size:18px;
+					}
+				.split {
+					height: 100%;
+					width: 50%;
+					position: fixed;		 					  
+					padding-top: 20px;
+					}
+				.right {
+					right: -100px;
+						  
+					}
+				table {
+					font-family: arial, sans-serif;
+					border-collapse: collapse;
+					width: 80%;
+					font-size:20px;	
+					height:40%;
+					}			
+
+				td, th {
+					
+					text-align: left;
+					padding: 8px;
+					}
+				th{
+					background-color:#219b93a8;
+					color:#ffffffd4;
+					}
+				tr:nth-child(even) {
+					background-color: #dddddd;
+					padding:0px 0px 0px 0px;
+					}	
+				
+		</style>
+	</head>
+
+	<body>
+			<h5><center>Bill Calculater</center></h5>
+		<form role="form">
+			<div class="container">	
+				<div class="container_contents">
+					<div class="split left">
+						<div class="row-sm-6">
+							<label class="col-sm-3" for="product">Product</label>
+							<select class="col-sm-5" id="mySelect">
+								<option value="">Select</option>
+								<option value="tomato">Tomato</option>
+								<option value="potato">Potato</option>
+								<option value="carrot">Carrot</option>
+								<option value="cauliflower">Cauliflower</option>
+								<option value="onion">Onion</option>
+							</select>
+						</div>
+						<div class="row-sm-6">
+							<label class="col-sm-3" for="kg">Needed (K/G)</label>
+							<input class="col-sm-5" type="text" id="quantity" onchange="setQuantity(this.value)">							
+						</div>
+						<div class="row-sm-6">
+							<label class="col-sm-3" for="Total Amount">Total Amount</label>
+							<span id="total"><input class="col-sm-5" type="text"></span>
+						</div>
+						<div class="row-sm-5">
+							<label class="col-sm-3" for="empty"></label>
+							<button type="button" class="col-sm-2 btn btn-primary btn-sm" onclick="calTotal()" >Calculate</button>
+							<button type="reset" class="col-sm-1 btn btn-danger btn-sm">Reset</button>
+						</div>
+					</div>
+					<div class="split right">
+						<table>
+							
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Unit(K/G)</th>
+								<th>Price</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Tomato</td>
+								<td>1</td>
+								<td><span id="tomato"></span></td>								
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Potato</td>
+								<td>1</td>
+								<td><span id="potato"></span></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Carrot</td>
+								<td>1</td>
+								<td><span id="carrot"></span></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>Cauliflower</td>
+								<td>1</td>
+								<td><span id="cauliflower"></span></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Onion</td>
+								<td>1</td>
+								<td><span id="onion"></span></td>
+							</tr>							
+						</table>
+					</div>
+				</div>
+				
+			</div>
+		</form>
+	</body>		
+	<script>	
+		document.getElementById("tomato").innerHTML = "20";
+		document.getElementById("potato").innerHTML = "10";
+		document.getElementById("carrot").innerHTML = "30";
+		document.getElementById("cauliflower").innerHTML = "25";
+		document.getElementById("onion").innerHTML = "40";
+			
+		var quantity = 0;
+		function setQuantity(quant) {
+			quantity = quant;
+			}
+		function calTotal() {
+		  const itemName = document.getElementById("mySelect").value;
+  		  const itemValue = document.getElementById(itemName).innerHTML;		  
+		  const total = quantity * itemValue;
+		document.getElementById("total").innerHTML = total;
+			}
+	</script>
+</html>
